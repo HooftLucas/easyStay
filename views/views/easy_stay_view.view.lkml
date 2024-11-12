@@ -1,10 +1,6 @@
-view: fact_listing {
-  sql_table_name: `EasyStayTable.fact_Listing` ;;
+view: easy_stay_view {
+  sql_table_name: `hooftlucas-devlab.easyStay.EasyStayView.easy_stay_view` ;;
 
-  dimension: accommodation_type_id {
-    type: number
-    sql: ${TABLE}.accommodationTypeID ;;
-  }
   dimension: attr_index {
     type: number
     sql: ${TABLE}.attr_index ;;
@@ -17,25 +13,25 @@ view: fact_listing {
     type: number
     sql: ${TABLE}.bedrooms ;;
   }
-  dimension: city_id {
-    type: number
-    sql: ${TABLE}.cityID ;;
+  dimension: biz {
+    type: yesno
+    sql: ${TABLE}.biz ;;
   }
-  dimension: cleanliness_rating_int {
-    type: number
-    sql: ${TABLE}.cleanliness_rating_int ;;
+  dimension: city_name {
+    type: string
+    sql: ${TABLE}.city_name ;;
   }
-  dimension: distance_from_center {
+  dimension: cleanliness_rating {
     type: number
-    sql: ${TABLE}.distance_from_center ;;
+    sql: ${TABLE}.cleanliness_rating ;;
+  }
+  dimension: dist {
+    type: number
+    sql: ${TABLE}.dist ;;
   }
   dimension: guest_satisfaction_overall {
     type: number
     sql: ${TABLE}.guest_satisfaction_overall ;;
-  }
-  dimension: host_id {
-    type: number
-    sql: ${TABLE}.hostID ;;
   }
   dimension: lat {
     type: number
@@ -45,21 +41,21 @@ view: fact_listing {
     type: number
     sql: ${TABLE}.lng ;;
   }
-  dimension: metro_distance {
+  dimension: metro_dist {
     type: number
-    sql: ${TABLE}.metro_distance ;;
+    sql: ${TABLE}.metro_dist ;;
   }
-  dimension: period_id {
-    type: number
-    sql: ${TABLE}.periodID ;;
+  dimension: multi {
+    type: yesno
+    sql: ${TABLE}.multi ;;
   }
   dimension: person_capacity {
     type: number
     sql: ${TABLE}.person_capacity ;;
   }
-  dimension: price {
+  dimension: real_sum {
     type: number
-    sql: ${TABLE}.price ;;
+    sql: ${TABLE}.realSum ;;
   }
   dimension: rest_index {
     type: number
@@ -69,11 +65,12 @@ view: fact_listing {
     type: number
     sql: ${TABLE}.rest_index_norm ;;
   }
-  dimension: row_hash {
+  dimension: week_type {
     type: string
-    sql: ${TABLE}.row_hash ;;
+    sql: ${TABLE}.week_type ;;
   }
   measure: count {
     type: count
+    drill_fields: [city_name]
   }
 }
