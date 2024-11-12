@@ -23,5 +23,19 @@ explore: view_dim_city {}
 explore: view_dim_host {}
 
 explore: view_fact_table {
-
+  join: dim_city {
+    sql_on: ${view_fact_table.city_id} = ${dim_city.city_id} ;;
+    relationship: many_to_one
+    type: left_outer
+  }
+  join: dim_acc_type {
+    sql_on: ${view_fact_table.accommodation_id} = ${dim_acc_type.acc_type_id} ;;
+    relationship: many_to_one
+    type: left_outer
+  }
+  join: dim_host {
+    sql_on: ${view_fact_table.host_id} = ${dim_host.host_id} ;;
+    relationship: many_to_one
+    type: left_outer
+  }
 }
