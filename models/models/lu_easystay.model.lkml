@@ -24,17 +24,17 @@ explore: view_dim_host {}
 
 explore: view_fact_table {
   join: dim_city {
-    sql_on: ${view_fact_table.city_id} = ${dim_city.city_id} ;;
+    sql_on: ${view_fact_table.city_name} = ${dim_city.name} ;;
     relationship: many_to_one
     type: left_outer
   }
   join: dim_acc_type {
-    sql_on: ${view_fact_table.accommodation_id} = ${dim_acc_type.acc_type_id} ;;
+    sql_on: ${view_fact_table.biz} = ${dim_acc_type.is_business} ;;
     relationship: many_to_one
     type: left_outer
   }
   join: dim_host {
-    sql_on: ${view_fact_table.host_id} = ${dim_host.host_id} ;;
+    sql_on: ${view_fact_table.host_type} = ${dim_host.is_super_host} ;;
     relationship: many_to_one
     type: left_outer
   }

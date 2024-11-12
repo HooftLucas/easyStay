@@ -5,10 +5,7 @@ view: view_fact_table {
     type: string
     sql: ${TABLE}.accommodation ;;
   }
-  dimension: accommodation_id {
-    type: number
-    sql: ${TABLE}.accommodation_id ;;
-  }
+
   dimension: attr_index {
     type: number
     sql: ${TABLE}.attr_index ;;
@@ -25,10 +22,7 @@ view: view_fact_table {
     type: yesno
     sql: ${TABLE}.biz ;;
   }
-  dimension: city_id {
-    type: number
-    sql: ${TABLE}.city_id ;;
-  }
+
   dimension: city_name {
     type: string
     sql: ${TABLE}.city_name ;;
@@ -47,10 +41,7 @@ view: view_fact_table {
     type: number
     sql: ${TABLE}.guest_satisfaction_overall ;;
   }
-  dimension: host_id {
-    type: number
-    sql: ${TABLE}.host_id ;;
-  }
+
   dimension: host_type {
     type: yesno
     sql: ${TABLE}.host_type ;;
