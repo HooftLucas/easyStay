@@ -1,5 +1,5 @@
 view: dim_period {
-  sql_table_name: `presentation_easystay.dim_period` ;;
+  sql_table_name: `EasyStayTable.dim_period` ;;
 
   dimension: period_id {
     type: number

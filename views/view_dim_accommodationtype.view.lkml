@@ -1,5 +1,5 @@
 view: view_dim_accommodationtype {
-  sql_table_name: `presentation_easystay.view_dim_accommodationtype` ;;
+  sql_table_name: `EasyStayTable.view_dim_accommodationtype` ;;
 
   dimension: accommodation_type_id {
     type: number

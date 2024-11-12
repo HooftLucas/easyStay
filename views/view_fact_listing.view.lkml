@@ -1,5 +1,5 @@
 view: view_fact_listing {
-  sql_table_name: `presentation_easystay.view_fact_listing` ;;
+  sql_table_name: `EasyStayTable.view_fact_listing` ;;
   dimension: accommodationTypeid {
     type: number
     sql: ${TABLE}.accommodationTypeID ;;

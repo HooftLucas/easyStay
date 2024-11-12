@@ -1,5 +1,5 @@
 view: dim_city {
-  sql_table_name: `presentation_easystay.dim_city` ;;
+  sql_table_name: `EasyStayTable.dim_city` ;;
 
   dimension: city_id {
     type: number
