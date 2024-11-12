@@ -9,3 +9,19 @@ datagroup: lu_easystay_default_datagroup {
 persist_with: lu_easystay_default_datagroup
 
 explore: easy_stay_view {}
+
+explore: dim_acc_type {}
+
+explore: dim_city {}
+
+explore: dim_host {}
+
+explore: view_dim_acc {}
+
+explore: view_dim_city {}
+
+explore: view_dim_host {}
+
+explore: view_fact_table {
+
+}

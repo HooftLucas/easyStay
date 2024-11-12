@@ -1,6 +1,14 @@
 view: easy_stay_view {
-  sql_table_name: `hooftlucas-devlab.easyStay.EasyStayView.easy_stay_view` ;;
+  sql_table_name: `hooftlucas-devlab.easyStay.EasyStayView` ;;
 
+  dimension: accommodation {
+    type: string
+    sql: ${TABLE}.accommodation ;;
+  }
+  dimension: accommodation_id {
+    type: number
+    sql: ${TABLE}.accommodation_id ;;
+  }
   dimension: attr_index {
     type: number
     sql: ${TABLE}.attr_index ;;
@@ -17,6 +25,10 @@ view: easy_stay_view {
     type: yesno
     sql: ${TABLE}.biz ;;
   }
+  dimension: city_id {
+    type: number
+    sql: ${TABLE}.city_id ;;
+  }
   dimension: city_name {
     type: string
     sql: ${TABLE}.city_name ;;
@@ -32,6 +44,14 @@ view: easy_stay_view {
   dimension: guest_satisfaction_overall {
     type: number
     sql: ${TABLE}.guest_satisfaction_overall ;;
+  }
+  dimension: host_id {
+    type: number
+    sql: ${TABLE}.host_id ;;
+  }
+  dimension: host_type {
+    type: yesno
+    sql: ${TABLE}.host_type ;;
   }
   dimension: lat {
     type: number
@@ -52,6 +72,10 @@ view: easy_stay_view {
   dimension: person_capacity {
     type: number
     sql: ${TABLE}.person_capacity ;;
+  }
+  dimension: private {
+    type: yesno
+    sql: ${TABLE}.private ;;
   }
   dimension: real_sum {
     type: number
