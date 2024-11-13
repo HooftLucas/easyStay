@@ -14,7 +14,7 @@ view: easy_stay_view {
     type: number
     sql: ${TABLE}.attr_index_norm ;;
   }
-  dimension: bedrooms {
+  dimension: Bedrooms {
     type: number
     sql: ${TABLE}.bedrooms ;;
   }
@@ -34,6 +34,7 @@ view: easy_stay_view {
   dimension: dist {
     type: number
     sql: ${TABLE}.dist ;;
+    value_format: "#.00"
   }
   dimension: guest_satisfaction_overall {
     type: number
@@ -55,6 +56,7 @@ view: easy_stay_view {
   dimension: metro_dist {
     type: number
     sql: ${TABLE}.metro_dist ;;
+    value_format: "#.00"
   }
   dimension: multi {
     type: yesno
@@ -71,6 +73,7 @@ view: easy_stay_view {
   dimension: real_sum {
     type: number
     sql: ${TABLE}.realSum ;;
+    value_format: "€#.00"
   }
   dimension: rest_index {
     type: number
@@ -84,8 +87,37 @@ view: easy_stay_view {
     type: string
     sql: ${TABLE}.week_type ;;
   }
+  dimension: coordinates {
+    type: location
+    sql_latitude: ${TABLE}.lat ;;
+    sql_longitude: ${TABLE}.lng ;;
+  }
   measure: count {
     type: count
     drill_fields: [city_name]
+  }
+  measure: average_price {
+    type:  average
+    sql: ${TABLE}.realSum;;
+    value_format: "€#.00"
+  }
+  measure: average_quality {
+    type: average
+    sql:  ${TABLE}.guest_satisfaction_overall ;;
+    value_format: "#.00"
+  }
+  measure: M_metro_dist {
+    type: number
+    sql: ${TABLE}.metro_dist ;;
+  }
+  measure: M_cost{
+    type:  number
+    sql: ${TABLE}.realSum;;
+    value_format: "€#.00"
+
+  }
+  measure: M_bed {
+    type: number
+    sql: ${TABLE}.bedrooms ;;
   }
 }
