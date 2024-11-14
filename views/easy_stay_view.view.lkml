@@ -13,6 +13,7 @@ view: easy_stay_view {
   dimension: attr_index_norm {
     type: number
     sql: ${TABLE}.attr_index_norm ;;
+    value_format: "#.00"
   }
   dimension: bedrooms {
     type: number
@@ -82,6 +83,7 @@ view: easy_stay_view {
   dimension: rest_index_norm {
     type: number
     sql: ${TABLE}.rest_index_norm ;;
+    value_format: "#.00"
   }
   dimension: week_type {
     type: string
@@ -104,18 +106,6 @@ view: easy_stay_view {
     type: location
     sql_latitude: ${TABLE}.lat ;;
     sql_longitude: ${TABLE}.lng ;;
-  }
-
-  # Filtered dimension for cleanliness_rating < 7
-  dimension: cleanliness_rating_below_7 {
-    type: number
-    sql: CASE WHEN ${TABLE}.cleanliness_rating < 7 THEN ${TABLE}.cleanliness_rating ELSE NULL END ;;
-    hidden: yes
-  }
-  dimension: cleanliness_rating_above_7 {
-    type: number
-    sql: CASE WHEN ${TABLE}.cleanliness_rating > 7 THEN ${TABLE}.cleanliness_rating ELSE NULL END ;;
-    hidden: yes
   }
 
   measure: count {
