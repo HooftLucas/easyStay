@@ -14,7 +14,7 @@ view: easy_stay_view {
     type: number
     sql: ${TABLE}.attr_index_norm ;;
   }
-  dimension: Bedrooms {
+  dimension: bedrooms {
     type: number
     sql: ${TABLE}.bedrooms ;;
   }
@@ -36,9 +36,9 @@ view: easy_stay_view {
     sql: ${TABLE}.dist ;;
     value_format: "#.00"
   }
-  dimension: guest_satisfaction_overall {
+  dimension: guest_satisfaction_percentage {
     type: number
-    sql: ${TABLE}.guest_satisfaction_overall ;;
+    sql: ${TABLE}.guest_satisfaction_percentage ;;
   }
 
   dimension: host_type {
@@ -70,9 +70,9 @@ view: easy_stay_view {
     type: yesno
     sql: ${TABLE}.private ;;
   }
-  dimension: real_sum {
+  dimension: price {
     type: number
-    sql: ${TABLE}.realSum ;;
+    sql: ${TABLE}.price ;;
     value_format: "€#.00"
   }
   dimension: rest_index {
@@ -87,37 +87,75 @@ view: easy_stay_view {
     type: string
     sql: ${TABLE}.week_type ;;
   }
+  dimension: city_lat  {
+    type:  number
+    sql:  ${TABLE}.city_lat ;;
+  }
+  dimension: city_long {
+    type:  number
+    sql:  ${TABLE}.city_lng ;;
+  }
+  dimension: coordinates_city{
+    type:  location
+    sql_latitude: ${TABLE}.city_lat;;
+    sql_longitude: ${TABLE}.city_lng ;;
+  }
   dimension: coordinates {
     type: location
     sql_latitude: ${TABLE}.lat ;;
     sql_longitude: ${TABLE}.lng ;;
   }
+
+  # Filtered dimension for cleanliness_rating < 7
+  dimension: cleanliness_rating_below_7 {
+    type: number
+    sql: CASE WHEN ${TABLE}.cleanliness_rating < 7 THEN ${TABLE}.cleanliness_rating ELSE NULL END ;;
+    hidden: yes
+  }
+  dimension: cleanliness_rating_above_7 {
+    type: number
+    sql: CASE WHEN ${TABLE}.cleanliness_rating > 7 THEN ${TABLE}.cleanliness_rating ELSE NULL END ;;
+    hidden: yes
+  }
+
   measure: count {
     type: count
     drill_fields: [city_name]
   }
   measure: average_price {
     type:  average
-    sql: ${TABLE}.realSum;;
+    sql: ${TABLE}.price;;
     value_format: "€#.00"
   }
   measure: average_quality {
     type: average
-    sql:  ${TABLE}.guest_satisfaction_overall ;;
+    sql:  ${TABLE}.guest_satisfaction_percentage ;;
     value_format: "#.00"
   }
+
   measure: M_metro_dist {
     type: number
     sql: ${TABLE}.metro_dist ;;
   }
   measure: M_cost{
     type:  number
-    sql: ${TABLE}.realSum;;
+    sql: ${TABLE}.price;;
     value_format: "€#.00"
 
   }
+  measure: M_guest {
+    type:  average
+    sql: ${TABLE}.guest_satisfaction_percentage ;;
+    value_format: "#.00"
+  }
   measure: M_bed {
-    type: number
+    type: sum
     sql: ${TABLE}.bedrooms ;;
   }
+  measure: total_true_is_super_host {
+    type: sum
+    sql: CASE WHEN ${host_type} = TRUE THEN 1 ELSE 0 END ;;
+  }
+
+
 }
